@@ -91,7 +91,7 @@ const data=[
         },
         {
           id: 3,
-          imgUrl: 'https://www.khazanajewellery.com/wp-content/uploads/2021/07/slider2.jpg',
+          imgUrl: 'https://images.hindustantimes.com/img/2022/08/02/1600x900/Katrina_Kaif_1659431467488_1659431467711_1659431467711.jpg',
           altText: 'Image 3',
         },
         {

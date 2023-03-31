@@ -8,21 +8,35 @@ export default function Users() {
   const [error, setError] = useState(false);
   const[count, setCount] = useState(1)
 
+
+  const fetchAndUpdate=async(url)=>{
+    try {
+      let res= await fetch(url)
+      let data= await res.json();
+      setData(data)
+    } catch (error) {
+      console.log(error) 
+    }
+  }
+
   useEffect(() => {
-    setLoading(true);
-    fetch(`https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=12`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((err) => {
-        setError(true);
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-        setError(false);
-      });
+    // setLoading(true);
+    // fetch(`https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=12`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setData(data);
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     setError(true);
+    //     console.log(err);
+    //   })
+    //   .finally(() => {
+    //     setLoading(false);
+       
+    //   });
+
+    fetchAndUpdate(`https://jsonplaceholder.typicode.com/comments?_page=${page}&_limit=12`);
   }, [page]);
 
   const handleMinus = (x) => {
@@ -51,7 +65,7 @@ export default function Users() {
 
   return loading ? (
     <h1>Loading.......</h1>
-  ) : (
+  ) :error? <h1>Somthing went wrong....</h1>:(
     <div>
       {/* {data.map((el) => {
         return (
